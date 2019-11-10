@@ -1,7 +1,6 @@
 export default {
   close: 'Uždaryti',
   dataIterator: {
-    pageText: '{0}-{1} iš {2}',
     noResultsText: 'Nerasta atitinkančių įrašų',
     loadingText: 'Kraunama...',
   },
@@ -21,6 +20,7 @@ export default {
     prevPage: 'Ankstesnis puslapis',
     firstPage: 'Pirmas puslapis',
     lastPage: 'Paskutinis puslapis',
+    pageText: '{0}-{1} iš {2}',
   },
   datePicker: {
     itemsSelected: '{0} pasirinkta',
@@ -29,6 +29,9 @@ export default {
   carousel: {
     prev: 'Ankstesnioji skaidrė',
     next: 'Kita skaidrė',
+    ariaLabel: {
+      delimiter: 'Carousel slide {0} of {1}',
+    },
   },
   calendar: {
     moreEvents: 'Daugiau {0}',
@@ -36,5 +39,9 @@ export default {
   fileInput: {
     counter: '{0} failų',
     counterSize: '{0} failų ({1} iš viso)',
+  },
+  timePicker: {
+    am: 'AM',
+    pm: 'PM',
   },
 }

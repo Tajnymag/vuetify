@@ -10,6 +10,9 @@ import ripple from '../../../directives/ripple'
 // Mixins
 import CalendarBase from './calendar-base'
 
+// Helpers
+import { escapeHTML } from '../../../util/helpers'
+
 // Util
 import props from '../util/props'
 import {
@@ -96,7 +99,7 @@ export default CalendarBase.extend({
       return typeof this.eventName === 'function'
         ? this.eventName as VNameFunction
         : (event, timedEvent) => {
-          const name = event.input[this.eventName as string] as string
+          const name = escapeHTML(event.input[this.eventName as string] as string)
           if (event.start.hasTime) {
             if (timedEvent) {
               const showStart = event.start.hour < 12 && event.end.hour >= 12
@@ -145,7 +148,8 @@ export default CalendarBase.extend({
         for (let i = 0; i <= last; i++) {
           if (!hide) {
             const eventBounds = events[i].getBoundingClientRect()
-            hide = eventBounds.bottom + eventHeight > parentBounds.bottom && i !== last
+            hide = (eventBounds.bottom + eventHeight > parentBounds.bottom && i !== last) ||
+                   events[i].style.display === 'none'
           }
           if (hide) {
             const id = events[i].getAttribute('data-event') as string
